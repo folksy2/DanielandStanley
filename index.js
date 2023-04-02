@@ -76,13 +76,8 @@ const inventors = [
    console.log(listOfInventors);
 function(arrayElement,array){
 
-   const g = inventors.filter((inventor,i)=>{
-   
-       console.log(i);  
-       
-       return inventor.year ===1564
-   })
-   
+   const g = inventors.filter((inventor,i)=>inventor.year===1564   
+         
    console.log(g);
   
   // Array.prototype.filter()
