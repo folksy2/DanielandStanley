@@ -74,11 +74,11 @@ const inventors = [
   console.log(inventors);
    const listOfInventors = inventors.filter( inventor => inventor.year >=1500 && inventor.year <=1600 );
    console.log(listOfInventors);
-function(arrayElement,array){
 
-   const g = inventors.filter((inventor,i)=>inventor.year===1564   
+
+   const g = inventors.filter((inventor,i)=>console.log('logging matched name and index', i, inventor.year===1564) 
          
-   console.log(g);
+   g();
   
   // Array.prototype.filter()
   // 2. Filter the list of inventors to retrieve only the ones that have the "mathematician" category
