@@ -76,9 +76,18 @@ const inventors = [
    console.log(listOfInventors);
 
 
-   const g = inventors.filter((inventor,i)=>console.log('logging matched name and index', i, inventor.year===1564) 
-         
-   g();
+   const isGreaterThan = (inventor)=>inventor.year>1870;
+function myFilter(predicate,array){
+      const filteredArray= [];
+      for(let i =0;i < array.length;i++){
+         const currentValue = array[i];
+          if(predicate(currentValue.year))
+              filteredArray.push(currentValue.name)
+      }
+    return filteredArray;
+}
+
+console.log(myFilter(isGreaterThan,inventors))
   
   // Array.prototype.filter()
   // 2. Filter the list of inventors to retrieve only the ones that have the "mathematician" category
