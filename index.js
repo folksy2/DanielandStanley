@@ -76,11 +76,14 @@ const inventors = [
    console.log(listOfInventors);
 function(arrayElement,array){
 
-   for(let i =0; i<array.length;i+ )
-       console.log(array[i]);
-       console.log(arrayElement);
-       return arrayElement;
-}
+   const g = inventors.filter((inventor,i)=>{
+   
+       console.log("this is one statemenent");
+       console.log("this is another statement");
+       // do explicit return here
+       
+       return inventor. name.
+   })
   
   // Array.prototype.filter()
   // 2. Filter the list of inventors to retrieve only the ones that have the "mathematician" category
