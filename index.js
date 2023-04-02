@@ -78,12 +78,12 @@ function(arrayElement,array){
 
    const g = inventors.filter((inventor,i)=>{
    
-       console.log("this is one statemenent");
-       console.log("this is another statement");
-       // do explicit return here
+       console.log(i);  
        
-       return inventor. name.
+       return inventor.year ===1564
    })
+   
+   console.log(g);
   
   // Array.prototype.filter()
   // 2. Filter the list of inventors to retrieve only the ones that have the "mathematician" category
