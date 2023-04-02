@@ -81,8 +81,8 @@ function myFilter(predicate,array){
       const filteredArray= [];
       for(let i =0;i < array.length;i++){
          const currentValue = array[i];
-          if(predicate(currentValue.year))
-              filteredArray.push(currentValue.name)
+          if(predicate(currentValue))
+              filteredArray.push(currentValue)
       }
     return filteredArray;
 }
