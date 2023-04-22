@@ -106,3 +106,59 @@ const App = () => {
 };
 
 export default App;
+
+=========================================================================================================================================================
+/*
+Simple react app to toggle light bulb images.
+The two images are located in my vscode's public folder.
+Not possible to place the folders here.
+The app can be run as is if the two bulb images are named exactly as in this app
+and placed in the public folder of your vscode.
+Notice the use of ternary operator to toggle the text on the button.
+Two states were used. One for on/off position. The other for the bulb images.
+Function component—always recommended so as to use hooks—is used instead of class component.
+*/
+
+import { useState } from 'react'
+
+const BulbLight = ({ on_off, toggle, img }) => {
+
+  const label = on_off ? "turnoff" : "turnon"
+
+  return (<div>
+    <img src={img} />
+    <div>
+      <button type="button" onClick={toggle}>{label}</button>
+    </div>
+
+  </div>)
+
+}
+
+function App() {
+  const [isOn, setIsOn] = useState(false)
+  const [bulbImage, setBulbImage] = useState("off.gif")
+
+  function switchImage() {
+    
+    if (isOn) {
+      setIsOn(false)
+      setBulbImage("off.gif");
+
+    } else {
+      setIsOn(true)
+      setBulbImage("on.gif");
+
+    }
+  }
+
+
+
+  return (
+    <div>
+      <BulbLight toggle={switchImage} on_off={isOn} img={bulbImage} />
+    </div>
+  );
+}
+
+export default App;
