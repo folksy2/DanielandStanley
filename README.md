@@ -108,6 +108,68 @@ const App = () => {
 export default App;
 
 =========================================================================================================================================================
+
+import { useState } from 'react'
+
+const BulbLight = ({ on_off, toggle, img, }) => {
+
+  const label = on_off ? "turnoff" : "turnon"
+
+  return (<div>
+    <img src={img} />
+    <img src={img} />
+    <img src={img} />
+    <img src={img} />
+    <div>
+      <img src={img} />
+      <img src={img} />
+      <img src={img} />
+      <img src={img} />
+    </div>
+    <div>
+      <button type="button" onClick={toggle}>{label}</button>
+
+    </div>
+  </div>)
+
+}
+
+function App() {
+  const [isOn, setIsOn] = useState(false)
+  const [bulbImage, setBulbImage] = useState("off.gif")
+  const [count, setCount] = useState(0)
+
+  function switchImage() {
+    if (isOn) {
+      setIsOn(false)
+      setBulbImage("off.gif");
+
+    } else {
+      setIsOn(true)
+      setBulbImage("on.gif");
+      setCount(count + 1)
+    }
+
+    setTimeout(() => {
+      setBulbImage("off.gif")
+      setIsOn(false)
+    }, 5000);
+
+  }
+
+  return (
+    <div>
+      <BulbLight toggle={switchImage} on_off={isOn} img={bulbImage} />
+      <>
+        The bulbs have been turned on {count} times
+      </>
+    </div>
+  );
+}
+
+export default App;
+=========================================================================================
+
 /*
 Simple react app to toggle light bulb images.
 The two images are located in my vscode's public folder.
@@ -182,3 +244,7 @@ function switchImage() {
     }, 5000);
 
   }
+  
+  =================================================================================================
+  
+  
