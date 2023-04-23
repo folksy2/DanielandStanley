@@ -162,3 +162,23 @@ function App() {
 }
 
 export default App;
+
+==================================================================
+/* The switchImage function was tweaked to automatically toggle the bulb image*/
+
+function switchImage() {
+    if (isOn) {
+      setIsOn(false)
+      setBulbImage("off.gif");
+
+    } else {
+      setIsOn(true)
+      setBulbImage("on.gif");
+    }
+
+    setTimeout(() => {
+      setBulbImage("off.gif")
+      setIsOn(false)
+    }, 5000);
+
+  }
