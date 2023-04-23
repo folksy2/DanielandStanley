@@ -157,12 +157,20 @@ function App() {
     }, 5000);
 
   }
+  const lightCandle = () => {
+    if (count > 10)
+      return (<div>
+        Daily electric limit exceeded.
+        Light a candle
+      </div>)
+  }
 
   return (
     <div>
       <BulbLight toggle={switchImage} on_off={isOn} img={bulbImage} />
       <>
-        The bulbs have been turned on {count} times
+        The bulbs have been turned on {count} times.
+        {lightCandle()}
       </>
     </div>
   );
