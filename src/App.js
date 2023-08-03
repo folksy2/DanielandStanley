@@ -1,0 +1,141 @@
+/*
+This application demonstrates frontend to backend communication under development. Json server provides some form of 'fake' REST services. React and javascript (the frontend) running on the browser communicate with Json server.Json database simulates Nosql database.In subsequent development for production, this frontend  communicates with Express server(Backend) which in turn communicates with mongodb database.
+License:
+Permission to use this app is granted under ISC Licence.
+/Stanley.
+*/
+
+
+import { useState, useEffect } from 'react'
+
+import Persons from './components/Persons'
+import PersonForm from './components/PersonForm'
+import Filter from './components/Filter'
+import Notification from './components/Notification'
+
+import personService from './services/persons'
+
+const App = () => {
+  const [persons, setPersons] = useState([])
+  const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
+  const [filter, setFilter] = useState('')
+  const [info, setInfo] = useState({ message: null })
+  //console.log(persons)
+  useEffect(() => {
+    personService.getAll().then((initialPersons =>
+      setPersons(initialPersons)
+    ))
+  }, [])
+
+  const notifyWith = (message, type = 'info') => {
+    setInfo({
+      message, type
+    })
+
+    setTimeout(() => {
+      setInfo({ message: null })
+    }, 3000)
+  }
+
+  const cleanForm = () => {
+    setNewName('')
+    setNewNumber('')
+  }
+
+  const updatePerson = (person) => {
+    const ok = window.confirm(`${newName} is already added to phonebook, replace the number?`)
+    if (ok) {
+      person.id = person.id ? person.id : person._id
+      personService.update(person.id, { ...person, number: newNumber }).then((updatedPerson) => {
+        setPersons(persons.map(p => p.id !== person.id ? p : updatedPerson))
+        notifyWith(`phone number of ${person.name} updated!`)
+      })
+        .catch((error) => {
+          if (error) {
+            notifyWith(`${person.name} number update failed.${error.response.data.error}.`, 'error')
+          }
+          else {
+            notifyWith(`${person.name} has already been removed`, 'error')
+            setPersons(persons.filter(p => p.id !== person.id))
+          }
+        })
+
+
+      cleanForm()
+    }
+  }
+
+  const addPerson = (event) => {
+    event.preventDefault()
+    const person = persons.find(p => p.name === newName)
+
+    if (person) {
+      updatePerson(person)
+      return
+    }
+
+    personService.create({
+      name: newName,
+      number: newNumber
+    }).then(createdPerson => {
+      setPersons(persons.concat(createdPerson))
+      notifyWith(`${createdPerson.name} added!`)
+      cleanForm()
+    })
+      .catch(error => {
+        console.log(error.response.data.error)
+        notifyWith(error.response.data.error, 'error')
+        cleanForm()
+      })
+  }
+
+  const removePerson = (person) => {
+    const ok = window.confirm(`remove ${person.name} from phonebook?`)
+    if (ok) {
+      person.id = person.id ? person.id : person._id
+      personService.remove(person.id).then(() => {
+        setPersons(persons.filter(p => p.id !== person.id))
+        notifyWith(`number of ${person.name} deleted!`)
+      })
+
+    }
+
+
+  }
+
+  const byFilterField =
+    p => p.name.toLowerCase().includes(filter.toLowerCase())
+
+  const personsToShow = filter ? persons.filter(byFilterField) : persons
+
+  return (
+    <div>
+      <h2>Phonebook</h2>
+
+      <Notification info={info} />
+
+      <Filter filter={filter} setFilter={setFilter} />
+
+      <h3>Add a new</h3>
+
+      <PersonForm
+        addPerson={addPerson}
+        newName={newName}
+        newNumber={newNumber}
+        setNewName={setNewName}
+        setNewNumber={setNewNumber}
+      />
+
+      <h3>Phone numbers</h3>
+
+      <Persons
+        persons={personsToShow}
+        removePerson={removePerson}
+      />
+    </div>
+  )
+
+}
+
+export default App

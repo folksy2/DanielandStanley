@@ -1,0 +1,14 @@
+{
+  "persons": [
+    {
+      "name": "Daniel Ntu Magburu Enyi",
+      "number": "040-123456",
+      "id": 1
+    },
+    {
+      "name": "Stanley Nwachinemelu",
+      "number": "047-8889990",
+      "id": 2
+    }
+  ]
+}
