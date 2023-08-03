@@ -1,7 +1,10 @@
 /*
-This application demonstrates frontend to backend communication under development. Json server provides some form of 'fake' REST services. React and javascript (the frontend) running on the browser communicate with Json server.Json database simulates Nosql database.In subsequent development for production, this frontend  communicates with Express server(Backend) which in turn communicates with mongodb database.
+This application demonstrates frontend to backend communication. Json server provides some form of 'fake' REST services. 
+React and javascript (the frontend)
+running on the browser communicate with Json server.Json database simulates Nosql database.In subsequent development for 
+deployment, this frontend  communicates with Express server(Backend) which in turn communicates with mongodb database.
 License:
-Permission to use this app is granted under ISC Licence.
+Permission to use this app is granted under ISC/IMT Licence.
 /Stanley.
 */
 
