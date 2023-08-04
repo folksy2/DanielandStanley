@@ -13,7 +13,7 @@ Clone the project or download the zip file.  Type `npm install node_modules` to 
  Issues may arise while attempting to clone the repo but you can try.
  Better to download the archive and unzip, or better still create relavant folders and files in vscode editor, then copy and paste codes there  .
  Ensure,as already mentioned, to download node_modules by typing npm install node_modules on the command line.
- Be sure, again, to be the root folder of the application
+ Be sure, again, to be in the root folder of the application
 
  For visitors:
  This application is purely for practice purposes. It is posted here for  a targeted user.
