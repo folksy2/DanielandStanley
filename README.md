@@ -11,7 +11,7 @@ Clone the project or download the zip file.  Type `npm install node_modules` to 
  **npm start** starts  React server on port 3000  while  **npm run server** starts json server on port 3001 .
  Make sure you navigated to the application's root folder  .
  Issues may arise while attempting to clone the repo but you can try.
- Better to download the archive and unzip, or better still create relavant folders and files in vscode editor, then copy and paste codes there  .
+ Better to download the archive and unzip, or better still create relevant folders and files in vscode editor, then copy and paste codes there  .
  Ensure,as already mentioned, to download node_modules by typing npm install node_modules on the command line.
  Be sure, again, to be in the root folder of the application
 
